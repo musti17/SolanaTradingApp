@@ -5,6 +5,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -20,24 +21,33 @@ export default function RootLayout() {
   const PRIVY_CLIENT_ID = extra.PRIVY_CLIENT_ID;
 
   return (
-    <PrivyProvider
-      appId={PRIVY_APP_ID}
-      clientId={PRIVY_CLIENT_ID}
-      config={{
-        embedded: {
-          solana: {
-            createOnLogin: "users-without-wallets",
-          },
-        },
-      }}
-    >
-      <ThemeProvider value={DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        <StatusBar style="auto" />
-      </ThemeProvider>
-    </PrivyProvider>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
+        <PrivyProvider
+          appId={PRIVY_APP_ID}
+          clientId={PRIVY_CLIENT_ID}
+          config={{
+            embedded: {
+              solana: {
+                createOnLogin: "users-without-wallets",
+              },
+            },
+          }}
+        >
+          <ThemeProvider value={DefaultTheme}>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                contentStyle: { backgroundColor: "#151915" },
+              }}
+            >
+              <Stack.Screen name="AuthGate" options={{ headerShown: false }} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+            <StatusBar style="auto" />
+          </ThemeProvider>
+        </PrivyProvider>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
