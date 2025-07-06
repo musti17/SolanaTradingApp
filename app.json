@@ -9,7 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+       "infoPlist": {
+        "NSUserTrackingUsageDescription": "Your data is stored securely.",
+        "NSFaceIDUsageDescription": "Face ID is used to secure your data."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -33,7 +37,9 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-secure-store",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
