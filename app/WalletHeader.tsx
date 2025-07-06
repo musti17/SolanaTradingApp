@@ -5,7 +5,7 @@ import { BlurView } from 'expo-blur';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-export function WalletHeader() {
+export default function WalletHeader() {
   const { wallets } = useEmbeddedSolanaWallet();
   const colorScheme = useColorScheme() ?? 'light';
   const wallet = wallets?.[0];

@@ -5,7 +5,7 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Tabs } from 'expo-router';
 import { Platform, View } from 'react-native';
-import { WalletHeader } from '../WalletHeader';
+import WalletHeader from '../WalletHeader';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
