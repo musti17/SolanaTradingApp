@@ -1,9 +1,13 @@
+import { usePrivy } from '@privy-io/expo';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Home() {
   const barHeights = [60, 70, 65, 80, 75, 85, 90, 88, 92, 95];
 
+  const {user} = usePrivy();
+
+  console.log(user);
 
   return (
     <ScrollView style={styles.container}>
